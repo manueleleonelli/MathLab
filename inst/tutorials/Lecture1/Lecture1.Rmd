@@ -28,7 +28,7 @@ Add a line of code that calculates the sum of 6 and 12.
 **Hint:** Just add a line of R code that calculates the sum of 6 and 12, just like the example in the sample code!
 </div>
 
-## Arithmetic with R
+### Arithmetic with R
 In its most basic form, R can be used as a simple calculator. Consider the following arithmetic operators:
 
  - Addition: `+`
@@ -59,7 +59,7 @@ In the editor below compute $2^5$ and run the code to see the results.
 **Hint:** Another example of exponentiation: `3^2` equals 9.
 </div>
 
-## Documenting your code
+### Documenting your code
 
 Adding comments to your code is extremely important to make sure that you and others can understand what your code is about. R makes use of the `#` sign to add comments.
 
@@ -414,64 +414,63 @@ rings <- c(FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, TRUE, TRUE)
 
 ```
 
-### Exercise 
+## Importing data
 
-*Here's a simple exercise with an empty code chunk provided for entering the answer.*
+One important thing before you actually do analyses on your data, is that you will need to get your data into R. R contains many functions to read in data from different formats. To name only a few:
 
-Write the R code required to add two plus two:
+ - `read.table`: Reads in tabular data such as txt files
+ - `read.csv`: Read in data from a comma-separated file format
+ 
+For the current exercise, I have put the R `mtcars` dataset into a csv file format and put this on github. The data can be found on the following link:
 
-```{r two-plus-two, exercise=TRUE}
+(https://raw.githubusercontent.com/manueleleonelli/MathLab/main/mtcars.csv)
+
+Load in the `mtcars` dataset using the `read.csv` function. Your code should look something like: `read.csv("dataset_url")`. Store the result into a variable called `cars` and print the first 6 rows of the dataset using the `head` function.
+
+
+```{r import, exercise=TRUE, exercise.lines = 4}
+# load in the data and store it in the variable cars
+
+# print the first 6 rows of the dataset using the head() function
 
 ```
 
-### Exercise with Code
-
-*Here's an exercise with some prepopulated code as well as `exercise.lines = 5` to provide a bit more initial room to work.*
-
-Now write a function that adds any two numbers and then call it:
-
-```{r add-function, exercise=TRUE, exercise.lines = 5}
-add <- function() {
-  
-}
+```{r import-hint}
+# You have to pass the entire URL as a string to the read.csv function. You need to pass the variable cars to the head function.
 ```
 
-## Topic 2
-
-### Exercise with Hint
-
-*Here's an exercise where the chunk is pre-evaulated via the `exercise.eval` option (so the user can see the default output we'd like them to customize). We also add a "hint" to the correct solution via the chunk immediate below labeled `print-limit-hint`.*
-
-Modify the following code to limit the number of rows printed to 5:
-
-```{r print-limit, exercise=TRUE, exercise.eval=TRUE}
-mtcars
+```{r import-solution}
+cars <- read.csv("https://raw.githubusercontent.com/manueleleonelli/MathLab/main/mtcars.csv")
+head(cars)
 ```
 
-```{r print-limit-hint}
-head(mtcars)
+### Working directories
+In the previous assignment, we practised reading in files in R. So far, the files were on the internet. However, if you would work with R studio on your own computer, you would probably like to read in local files.
+
+When reading in local files, it's good to have an idea what your working directory is. Your working directory is basically the part of your file system that R will look for files. Usually this is something along the lines of C:/Users/Username/documents. Of course this working directory is not static and can be changed by the user.
+
+In R there are two important functions:
+
+ - `getwd()`: This function will retrieve the current working directory for the user
+ - `setwd()`: This functions allows the user to set her own working directory
+ 
+Retrieve your current working directory and set the curent working directory to the output that you got from the `getwd()` function
+
+```{r getwd, exercise=TRUE, exercise.lines = 5}
+# retrieve the current working directory
+
+# set the working directory again to the output of your current working directory
+
+```
+```{r getwd-solution}
+getwd()
+setwd("...")
 ```
 
-### Quiz
+## Importing packages
 
-*You can include any number of single or multiple choice questions as a quiz. Use the `question` function to define a question and the `quiz` function for grouping multiple questions together.*
+Although base R comes with a lot of useful functions, you will not be able to fully leverage the full power of R without being able to import R modules developed by others. Imagine we want to do some great plotting and we want to use the package `ggplot2` for it. If we want to do so, we need to take 2 steps:
 
-Some questions to verify that you understand the purposes of various base and recommended R packages:
-
-```{r quiz}
-quiz(
-  question("Which package contains functions for installing other R packages?",
-    answer("base"),
-    answer("tools"),
-    answer("utils", correct = TRUE),
-    answer("codetools")
-  ),
-  question("Which of the R packages listed below are used to create plots?",
-    answer("lattice", correct = TRUE),
-    answer("tools"),
-    answer("stats"),
-    answer("grid", correct = TRUE)
-  )
-)
-```
+ - Install the package `ggplot2` using `install.packages("ggplot2")`
+ - Load the package `ggplot2` using `library(ggplot2)`
 
