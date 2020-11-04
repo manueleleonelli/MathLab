@@ -1,0 +1,477 @@
+---
+title: "MathLab - Lecture 1"
+output:   learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Your first steps with R
+
+In the editor below there is already some sample code. Can you see which lines are actual code and which are comments?
+
+Add a line of code that calculates the sum of 6 and 12.
+
+```{r sum, exercise=TRUE, exercise.lines = 5}
+# Calculate 3 + 4
+3 + 4
+
+# Calculate 6 + 12
+
+```
+
+<div id="sum-hint">
+**Hint:** Just add a line of R code that calculates the sum of 6 and 12, just like the example in the sample code!
+</div>
+
+## Arithmetic with R
+In its most basic form, R can be used as a simple calculator. Consider the following arithmetic operators:
+
+ - Addition: `+`
+ - Subtraction `-`
+ - Multiplication: `*`
+ - Division: `/`
+ - Exponentiation: `^`
+ 
+In the editor below compute $2^5$ and run the code to see the results.
+
+```{r arithmetic, exercise = TRUE, exercise.lines = 14}
+# An addition
+5 + 5 
+
+# A subtraction
+5 - 5 
+
+# A multiplication
+3 * 5
+
+# A division
+(5 + 5) / 2 
+
+# Exponentiation
+
+```
+<div id="arithmetic-hint">
+**Hint:** Another example of exponentiation: `3^2` equals 9.
+</div>
+
+## Documenting your code
+
+Adding comments to your code is extremely important to make sure that you and others can understand what your code is about. R makes use of the `#` sign to add comments.
+
+It's important to note that comments are not run as R code, so they will not influence your result. For example, *Calculate 3 + 4* in the editor on the right is a comment and is ignored during execution.
+
+Add another comment in the editor on the right, *Calculate 6 + 12*, at the appropriate location.
+
+```{r comment, exercise=TRUE, exercise.lines = 5}
+# Calculate 3 + 4
+3 + 4
+
+
+6 + 12
+```
+
+<div id="comment-hint">
+**Hint:** Simply add the line `# Calculate 6 + 12` above the R code that calculates 6 + 12.
+</div>
+
+## Variable assignment 
+A basic concept in R programming is the **variable**. It allows you to store a value or an object in R. You can then later use this variable's name to easily access the value or the object that is stored within this variable. You use `<-` to assign a variable: `my_variable <- 4`.
+
+Complete the code in the editor such that it assigns the value 42 to the variable `x`. Notice that when you ask R to print x, the value 42 appears.
+
+```{r var1, exercise=TRUE, exercise.lines = 5}
+# Assign the value 42 to x
+x <- 
+
+# Print out the value of the variable x
+x
+```
+
+<div id="var1-hint">
+Look at how the value 4 was assigned to `my_variable` in the text above. Do the exact same thing in the editor, but now assign 42 to the variable `x`.
+</div>
+
+### Working with variables 
+
+Variables are great to perform arithmetic operations with. In this assignment, we have defined a variable `my_apples`. You want to define another variable called `my_oranges` and add these two together: `my_apples + my_oranges`.
+
+ - Create a variable called `my_oranges` and assign it the value of 6.
+ - Add the variables `my_apples` and `my_oranges` and have R simply print the result.
+ - Combine the variables `my_apples` and `my_oranges` into a new variable `my_fruit`, which is the total amount of fruits in your fruit basket.
+ 
+```{r var2, exercise=TRUE, exercise.lines = 10}
+# Assign a value to the variables my_apples and my_oranges
+my_apples <- 5
+
+
+# Add these two variables together and print the result
+
+
+# Create the variable my_fruit
+
+```
+
+<div id="var2-hint">
+`my_fruit` is just the sum of `my_apples` and `my_oranges`. You can use the `+` operator to sum the two and `<-` to assign that value to the variable `my_fruit`.
+</div>
+
+### Apples and Oranges 
+Common sense tells you not to add apples and oranges. The `my_apples` and `my_oranges` variables both contained a number in the previous exercise. The `+` operator works with numeric variables in R. If you really tried to add "apples" and "oranges", and assigned a text value to the variable `my_oranges` but not to `my_apples` (see the editor), you would be trying to assign the addition of a numeric and a character variable to the variable `my_fruit`. This is not possible.
+
+ - Click 'Run code' and read the error message. Make sure to understand why this did not work.
+ - Adjust the code so that R knows you have 6 oranges and thus a fruit basket with 11 pieces of fruit.
+
+```{r var3, exercise=TRUE, exercise.lines = 13}
+# Assign a value to the variable called my_apples
+my_apples <- 5 
+
+# Print out the value of my_apples
+my_apples       
+
+# Assign a value to the variable my_oranges and print it out
+my_oranges <- "six" 
+my_oranges 
+
+# New variable that contains the total amount of fruit
+my_fruit <- my_apples + my_oranges 
+my_fruit
+
+```
+
+<div id="var3-hint">
+You have to assign the numeric value `6` to the `my_oranges` variable instead of the character value `"six"`. Note how the quotation marks are used to indicate that `"six"` is a character.
+</div>
+
+## Basic Data Types
+
+Some of R's most basic types to get started are:
+
+ - Decimals values like 4.5 are called **numerics**.
+ - Natural numbers like 4 are called **integers**. Integers are also numerics.
+ - Boolean values (TRUE or FALSE) are called **logical**.
+ - Text (or string) values are called **characters**.
+ 
+Note how the quotation marks on the right indicate that `"some text"` is a character.
+
+Change the value of the:
+
+ - `my_numeric` variable to `42`.
+ - `my_character` variable to `"universe"`. Note that the quotation marks indicate that `"universe"` is a character.
+ - `my_logical` variable to `FALSE`.
+ 
+Note that R is case sensitive!
+
+
+```{r type, exercise=TRUE, exercise.lines = 8}
+# Change my_numeric to be 42
+my_numeric <- 42.5
+
+# Change my_character to be "universe"
+my_character <- "some text"
+
+# Change my_logical to be FALSE
+my_logical <- TRUE
+
+```
+
+<div id="type-hint">
+Replace the values in the editor with the values that are provided in the exercise. For example: `my_numeric <- 42` assigns the value `42` to the variable `my_numeric`.
+</div>
+
+### What's that data type
+Do you remember that when you added `5 + "six"`, you got an error due to a mismatch in data types? You can avoid such embarrassing situations by checking the data type of a variable beforehand. You can do this with the `class()` function, as the code in the editor shows.
+
+Complete the code in the editor and also print out the classes of `my_character` and `my_logical`.
+
+```{r type2, exercise=TRUE, exercise.lines = 13}
+# Declare variables of different types
+my_numeric <- 42
+my_character <- "universe"
+my_logical <- FALSE 
+
+# Check class of my_numeric
+class(my_numeric)
+
+# Check class of my_character
+
+
+# Check class of my_logical
+
+```
+
+<div id="type2-hint">
+The code that prints the data type of `my_numeric` is already included; do a similar things for `my_character` and `my_logical`.
+</div>
+
+
+## Vectors
+
+Vectors are one-dimension arrays that can hold numeric data, character data, or logical data. In other words, a vector is a simple tool to store data. In R, you create a vector with the combine function `c()`. You place the vector elements separated by a comma between the brackets. For example:
+
+ - `numeric_vector <- c(1, 2, 3)`
+ - `character_vector <- c("a", "b", "c")`
+ - `boolean_vector <- c(TRUE, FALSE)`
+ 
+Complete the code such that `boolean_vector` contains the three elements: `TRUE`, `FALSE` and `TRUE` (in that order) and print the result.
+
+
+```{r vec1, exercise=TRUE, exercise.lines = 6}
+numeric_vector <- c(1, 10, 49)
+character_vector <- c("a", "b", "c")
+
+# Complete the code for 'boolean_vector'
+
+```
+
+<div id="vec1-hint">
+Assign `c(TRUE,FALSE,TRUE)` to the variable `boolean_vector` with the `<-` operator. You can also use the shorter notations, `T` and `F` for `TRUE` and `FALSE` respectively.
+</div>
+
+### Selecting entries
+In the previous assignment, you created 3 vectors: a numeric vector, a character vector and a boolean vector. Sometimes you only want to select a specific element from one of those vectors instead of using the entire vector. R makes this very easy using indexing.
+
+Indexing entails the use of square brackets `[]` to select elements from a vector. For instance, `numeric_vector[1]` will select the first element of the vector `numeric_vector`. `numeric_vector[c(1,3)]` will select the first and the third element of the vector `numeric_vector`.
+
+ - Select the letter "a" from `character_vector`
+ - Select the second and the third element of `boolean_vector`
+
+```{r vec2, exercise=TRUE, exercise.lines = 11}
+# A numeric vector containing 3 elements
+numeric_vector <- c(1, 10, 49)
+
+# a character vector containing 3 elements
+character_vector <- c("a", "b", "c")
+
+# Complete the code for 'boolean_vector'
+boolean_vector <- c(TRUE, FALSE, TRUE)
+
+# Put your code here
+
+```
+
+<div id="vec2-hint">
+`a` is the first element of `character_vector` and can thus be selected using `character_vector[1]`.
+</div>
+
+### Selection by comparison
+
+Sometimes you want to select elements from a vector in a more advanced fashion. This is where the use of logical operators may come in handy.
+
+The (logical) comparison operators known to R are: 
+  - `<` for less than
+  - `>` for greater than
+  - `<=` for less than or equal to 
+  - `>=` for greater than or equal to 
+  - `==` for equal to each other 
+  - `!=` not equal to each other
+  
+The nice thing about R is that you can use these comparison operators on vectors. For example, the statement `c(4,5,6) > 5` returns: FALSE FALSE TRUE. In other words, you test for every element of the vector if the condition stated by the comparison operator is TRUE or FALSE.
+
+ - Check which values in `numeric_vector` are larger than 10. Assign the result to the variable `larger_than_ten`.
+ - print the variable `larger_than_ten` to the console.
+ 
+```{r vec3, exercise=TRUE, exercise.lines = 4}
+# A numeric vector containing 3 elements
+numeric_vector <- c(1, 10, 49)
+
+
+```
+```{r vec3-solution}
+# This is the solution
+larger_than_ten <- numeric_vector > 10
+larger_than_ten
+```
+
+```{r vec3-hint}
+# Use the following code to get values larger than 10: `numeric_vector > 10`
+```
+
+In the last exercise we saw `larger_than_ten` consisted of a vector of `TRUE` and `FALSE`. We make use of this logical vector to select elements from another vector. For instance, `numeric_vector[c(TRUE, FALSE, TRUE)]` will select the first and the third element from the vector numeric_vector.
+
+ - Print the items from `numeric_vector` that are larger than 10
+ 
+```{r vec4, exercise=TRUE, exercise.lines = 4}
+numeric_vector <- c(1, 10, 49)
+larger_than_ten <- numeric_vector > 10
+
+```
+```{r vec4-solution}
+# This is the solution
+numeric_vector[larger_than_ten]
+```
+
+```{r vec4-hint}
+# You may want to use the vector `larger_than_ten` for indexing the `vector numeric_vector`.
+```
+
+## Matrices
+
+In R, a matrix is a collection of elements of the same data type (numeric, character, or logical) arranged into a fixed number of rows and columns.
+
+You can construct a matrix in R with the `matrix()` function. Consider the following example:
+
+`matrix(1:9, byrow = TRUE, nrow = 3, ncol = 3)`
+
+ - The first argument is the collection of elements that R will arrange into the rows and columns of the matrix. Here, we use `1:9` which constructs the vector `c(1, 2, 3, 4, 5, 6, 7, 8, 9)`.
+ - The argument `byrow` indicates that the matrix is filled by the rows. This means that the matrix is filled from left to right and when the first row is completed, the filling continues on the second row. If we want the matrix to be filled by the columns, we just place `byrow = FALSE`.
+ - The third argument `nrow` indicates that the matrix should have three rows.
+ - The fourth argument `ncol` indicates the number of columns that the matrix should have.
+ 
+ - Construct a matrix with 5 rows and 4 columns containing the numbers 1 up to 20 and assign it to the variable `m` Specify the `byrow` argument to be `TRUE`.
+ - Print `m` to the console
+ 
+```{r mat, exercise=TRUE, exercise.lines = 5}
+# Construction of a matrix with 5 rows that contain the numbers 1 up to 20 and assign it to m
+
+
+# print m to the console
+
+
+```
+
+```{r mat-hint}
+# You may want to try something like `matrix(data, byrow = TRUE, nrow = 5, ncol = 4)`
+```
+
+## Dataframes
+
+All the elements that you put in a matrix should be of the same type. However, when performing a market research survey, you often have questions such as:
+
+ - 'Are your married?' or 'yes/no' questions (= boolean data type)
+ - 'How old are you?' (= numeric data type)
+ - 'What is your opinion on this product?' or other 'open-ended' questions (= character data type)
+ 
+The output, namely the respondents' answers to the questions formulated above, is a data set of different data types. You will often find yourself working with data sets that contain different data types instead of only one. A data frame has the variables of a data set as columns and the observations as rows. 
+
+Print the object `mtcars`.
+
+```{r mtcars, exercise=TRUE, exercise.lines = 2}
+# print mtcars to the console
+```
+
+### Inspecting dataframes
+
+There are several functions you can use to inspect your dataframe. To name a few
+
+ - `head`: this by default prints the first 6 rows of the dataframe
+ - `tail`: this by default prints the last 6 rows to the console
+ - `str`: this prints the structure of your dataframe
+ - `dim`: this by default prints the dimensions, that is, the number of rows and columns of your dataframe
+ - `colnames`: this prints the names of the columns of your dataframe
+
+Print the first 6 rows of `mtcars`, the structure of the dataframe `mtcars` and the dimensions of the dataframe `mtcars`.
+
+```{r mtcars2, exercise=TRUE, exercise.lines = 9}
+# print the first 6 rows of mtcars
+
+
+# print the structure of mtcars
+
+
+# print the dimensions of mtcars
+```
+
+```{r mtcars2-hint}
+# Think about the functions `head`, `str` and `dim`.
+```
+ 
+ 
+### Constructing a dataframe yourself
+
+As a first goal, you want to construct a data frame that describes the main characteristics of eight planets in our solar system. The main features of a planet are:
+
+ - The type of planet (Terrestrial or Gas Giant).
+ - The planet's diameter relative to the diameter of the Earth.
+ - The planet's rotation across the sun relative to that of the Earth.
+ - If the planet has rings or not (TRUE or FALSE).
+ 
+You construct a data frame with the `data.frame()` function. As arguments, you should provide the above mentioned vectors as input that should become the different columns of that data frame. Therefore, it is important that each vector used to construct a data frame has an equal length. But do not forget that it is possible (and likely) that they contain different types of data.
+
+Use the function `data.frame()` to construct a data frame. Call this variable `planet_df`.
+
+```{r df, exercise=TRUE, exercise.lines = 18}
+# planets vector
+planets <- c("Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune")
+
+# type vector
+type <- c("Terrestrial planet", "Terrestrial planet", "Terrestrial planet", "Terrestrial planet", "Gas giant", "Gas giant", "Gas giant", "Gas giant")
+
+# diameter vector
+diameter <- c(0.382, 0.949, 1, 0.532, 11.209, 9.449, 4.007, 3.883)
+
+# rotation vector
+rotation <- c(58.64, -243.02, 1, 1.03, 0.41, 0.43, -0.72, 0.67)
+
+# rings vector
+rings <- c(FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, TRUE, TRUE)
+
+# construct a dataframe planet_df from all the above variables
+
+```
+
+### Exercise 
+
+*Here's a simple exercise with an empty code chunk provided for entering the answer.*
+
+Write the R code required to add two plus two:
+
+```{r two-plus-two, exercise=TRUE}
+
+```
+
+### Exercise with Code
+
+*Here's an exercise with some prepopulated code as well as `exercise.lines = 5` to provide a bit more initial room to work.*
+
+Now write a function that adds any two numbers and then call it:
+
+```{r add-function, exercise=TRUE, exercise.lines = 5}
+add <- function() {
+  
+}
+```
+
+## Topic 2
+
+### Exercise with Hint
+
+*Here's an exercise where the chunk is pre-evaulated via the `exercise.eval` option (so the user can see the default output we'd like them to customize). We also add a "hint" to the correct solution via the chunk immediate below labeled `print-limit-hint`.*
+
+Modify the following code to limit the number of rows printed to 5:
+
+```{r print-limit, exercise=TRUE, exercise.eval=TRUE}
+mtcars
+```
+
+```{r print-limit-hint}
+head(mtcars)
+```
+
+### Quiz
+
+*You can include any number of single or multiple choice questions as a quiz. Use the `question` function to define a question and the `quiz` function for grouping multiple questions together.*
+
+Some questions to verify that you understand the purposes of various base and recommended R packages:
+
+```{r quiz}
+quiz(
+  question("Which package contains functions for installing other R packages?",
+    answer("base"),
+    answer("tools"),
+    answer("utils", correct = TRUE),
+    answer("codetools")
+  ),
+  question("Which of the R packages listed below are used to create plots?",
+    answer("lattice", correct = TRUE),
+    answer("tools"),
+    answer("stats"),
+    answer("grid", correct = TRUE)
+  )
+)
+```
+
