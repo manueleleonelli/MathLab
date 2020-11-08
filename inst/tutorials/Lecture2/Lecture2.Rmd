@@ -1,0 +1,27 @@
+---
+title: "MathLab - Lecture 2"
+output:   learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Factors (Chapter 1) and levels (Chapter 2)
+
+## Recoding Variables
+
+## Inspecting DataFrames
+
+## Indexing and Selecting Columns
+
+## Functions
+
+## Importing data
+
+## Table Command
+
+

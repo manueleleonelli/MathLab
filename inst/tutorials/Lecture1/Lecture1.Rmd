@@ -98,7 +98,7 @@ Look at how the value 4 was assigned to `my_variable` in the text above. Do the 
 
 ### Working with variables 
 
-Variables are great to perform arithmetic operations with. In this assignment, we have defined a variable `my_apples`. You want to define another variable called `my_oranges` and add these two together: `my_apples + my_oranges`.
+Variables are great to perform arithmetic operations with. In this assignment, I have defined a variable `my_apples`. You want to define another variable called `my_oranges` and add these two together: `my_apples + my_oranges`.
 
  - Create a variable called `my_oranges` and assign it the value of 6.
  - Add the variables `my_apples` and `my_oranges` and have R simply print the result.
@@ -258,9 +258,11 @@ boolean_vector <- c(TRUE, FALSE, TRUE)
 `a` is the first element of `character_vector` and can thus be selected using `character_vector[1]`.
 </div>
 
+
+<!--
 ### Selection by comparison
 
-Sometimes you want to select elements from a vector in a more advanced fashion. This is where the use of logical operators may come in handy.
+ Sometimes you want to select elements from a vector in a more advanced fashion. This is where the use of logical operators may come in handy.
 
 The (logical) comparison operators known to R are: 
   - `<` for less than
@@ -308,7 +310,7 @@ numeric_vector[larger_than_ten]
 ```{r vec4-hint}
 # You may want to use the vector `larger_than_ten` for indexing the `vector numeric_vector`.
 ```
-
+ -->
 ## Matrices
 
 In R, a matrix is a collection of elements of the same data type (numeric, character, or logical) arranged into a fixed number of rows and columns.
