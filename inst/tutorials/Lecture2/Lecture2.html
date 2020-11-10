@@ -119,13 +119,13 @@ $(document).ready(function () {
 <div id="section-vectors" class="section level2">
 <h2>Vectors</h2>
 <p>Vectors are one-dimension arrays that can hold one same type of data. In other words, a vector is a simple tool to store data. For example, you can store your daily gains and losses in the casinos.</p>
-<p>In R, you create a vector with the combine function c(). You place the vector elements separated by a comma between the brackets. For example:</p>
+<p>In R, you create a vector with the combine function <code>c()</code>. You place the vector elements separated by a comma between the brackets. For example:</p>
 <ul>
 <li><code>numeric_vector &lt;- c(1, 2, 3)</code></li>
 <li><code>character_vector &lt;- c("a", "b", "c")</code></li>
 <li><code>boolean_vector &lt;- c(TRUE, FALSE)</code></li>
 </ul>
-<p>Complete the code such that boolean_vector contains the three elements: <code>TRUE</code>, <code>FALSE</code> and <code>TRUE</code> (in that order).</p>
+<p>Complete the code such that <code>boolean_vector</code> contains the three elements: <code>TRUE</code>, <code>FALSE</code> and <code>TRUE</code> (in that order).</p>
 <div class="tutorial-exercise" data-label="vec" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="5">
 <pre class="text"><code>numeric_vector &lt;- c(1, 10, 49)
 character_vector &lt;- c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
@@ -258,7 +258,7 @@ colnames(mtcars)</code></pre>
 <div id="section-matching" class="section level3">
 <h3>Matching</h3>
 <p>In the last exercise we made a start with functions. Also, we looked at how we could get help on using functions.</p>
-<p>When getting help on the mean function, you saw that it takes an argument x, which is just an arbitrary name for the object that you want to find the mean of. Usually this object will be an R vector. We also saw the …. This is called an elipsis and is used to provide a number of optional arguments to the function.</p>
+<p>When getting help on the mean function, you saw that it takes an argument <code>x</code>, which is just an arbitrary name for the object that you want to find the mean of. Usually this object will be an R vector. We also saw the …. This is called an elipsis and is used to provide a number of optional arguments to the function.</p>
 <p>R can match arguments both by position and by name. Let’s say we want to find the mean of a vector called <code>temperature</code>. An example of matching by name is the following:</p>
 <ul>
 <li><code>mean(x = temperature)</code></li>
@@ -352,7 +352,7 @@ str(mtcars)</code></pre>
 <li><code>levels</code> an optional vector of the unique values (as character strings) that <code>x</code> might have taken</li>
 <li><code>labels</code> an optional character vector of labels for the levels</li>
 </ul>
-<p>So for instance we can transform the variable <code>vs</code> into a factor by <code>mtcars$vs &lt;- factor(mtcars$vs,labels = c("V","S")</code>.</p>
+<p>So for instance we can transform the variable <code>vs</code> into a factor by <code>mtcars$vs &lt;- factor(mtcars$vs,labels = c("V","S"))</code>.</p>
 <div class="tutorial-exercise" data-label="am" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="6">
 <pre class="text"><code># Transform the variable am of mtcars into a factor
 

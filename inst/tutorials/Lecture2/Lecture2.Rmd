@@ -12,13 +12,13 @@ knitr::opts_chunk$set(echo = FALSE)
 ## Vectors
 Vectors are one-dimension arrays that can hold one same type of data. In other words, a vector is a simple tool to store data. For example, you can store your daily gains and losses in the casinos.
 
-In R, you create a vector with the combine function c(). You place the vector elements separated by a comma between the brackets. For example:
+In R, you create a vector with the combine function `c()`. You place the vector elements separated by a comma between the brackets. For example:
 
  - `numeric_vector <- c(1, 2, 3)`
  - `character_vector <- c("a", "b", "c")`
  - `boolean_vector <- c(TRUE, FALSE)`
 
-Complete the code such that boolean_vector contains the three elements: `TRUE`, `FALSE` and `TRUE` (in that order).
+Complete the code such that `boolean_vector` contains the three elements: `TRUE`, `FALSE` and `TRUE` (in that order).
 
 ```{r vec, exercise=TRUE, exercise.lines = 5}
 numeric_vector <- c(1, 10, 49)
@@ -181,7 +181,7 @@ You can ask help about any function by typing `?function`, for instance, `?sd` t
 
 In the last exercise we made a start with functions. Also, we looked at how we could get help on using functions.
 
-When getting help on the mean function, you saw that it takes an argument x, which is just an arbitrary name for the object that you want to find the mean of. Usually this object will be an R vector. We also saw the .... This is called an elipsis and is used to provide a number of optional arguments to the function.
+When getting help on the mean function, you saw that it takes an argument `x`, which is just an arbitrary name for the object that you want to find the mean of. Usually this object will be an R vector. We also saw the .... This is called an elipsis and is used to provide a number of optional arguments to the function.
 
 R can match arguments both by position and by name. Let's say we want to find the mean of a vector called `temperature`. An example of matching by name is the following:
 
@@ -290,7 +290,7 @@ Such categorical variables should be stored in R as a `factor`. The function `fa
  - `levels` an optional vector of the unique values (as character strings) that `x` might have taken
  - `labels` an optional character vector of labels for the levels
  
-So for instance we can transform the variable `vs` into a factor by `mtcars$vs <- factor(mtcars$vs,labels = c("V","S")`.
+So for instance we can transform the variable `vs` into a factor by `mtcars$vs <- factor(mtcars$vs,labels = c("V","S"))`.
 
 ```{r am, exercise = TRUE, exercise.lines = 6}
 # Transform the variable am of mtcars into a factor
