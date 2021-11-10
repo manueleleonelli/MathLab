@@ -1,5 +1,5 @@
 ---
-title: "MathLab - Lecture 4"
+title: "MathLab - Lab 2"
 output:   learnr::tutorial
 runtime: shiny_prerendered
 ---
@@ -9,22 +9,36 @@ library(learnr)
 knitr::opts_chunk$set(echo = FALSE)
 mtcars$am <- factor(mtcars$am, labels = c("automatic", "manual"))
 mtcars$vs <- factor(mtcars$vs, labels = c("V", "S"))
-mtcars$cyl <- factor(mtcars$cyl)
-mtcars$gear <- factor(mtcars$gear)
-mtcars$carb <- factor(mtcars$carb)
 library(ggplot2)
 ```
 
 ## Exploratory Data Analysis
 
-In this lab we will implement our first exploratory analysis in R. We will use the `mtcars` dataset we have been working with throughout this module. As a first starting point it is always good to check the structure of the `dataframe` to ensure the data is stored correctly.
+In this lab we will implement our first exploratory analysis in R. We will use the `mtcars` dataset we have been already working with.
+
+The aim of an exploratory analysis is to have an overview of the data of interest and to discern interesting patterns. Such patterns may then be used to guide the modeling we will learn in the next lectures.
+
+Steps of an exploratory analysis may include:
+
+ - checking that the data is stored correctly in the software (variable types, missing values etc.)
+ 
+ - create numerical summaries of the data
+ 
+ - produce graphical representations of the data
+ 
+As a first starting point it is always good to check the structure of the `dataframe` to ensure the data is stored correctly using the function `str`.
 
 ```{r mtcars, exercise = TRUE, exercise.lines = 2}
 # Check the structure of the mtcars dataset
 
 ```
 
-So we see that the variables `cyl`, `vs`, `am`, `gear` and `carb` are (correctly) stored as factors in `mtcars`. So we can start our exploratory data analysis. A good starting point is the function `summary` which, as the name suggests, produces a summary of the dataset.
+So we see that the variables  `vs` and `am` are (correctly) stored as factors in `mtcars`. So we can start our exploratory data analysis. 
+
+
+## Numerical Summaries
+
+Often one of the first steps in an analysis is to produce numerical summaries of the data. This can be achieved with the function `summary` which, as the name suggests, produces a summary of the dataset.
 
 ```{r summary, exercise = TRUE, exercise.lines =2}
 # Use the function summary over the mtcars dataset
@@ -54,7 +68,8 @@ The above functions are included in base R, but of course packages can provide m
 
 More details can be found at this [link](https://dabblingwithdata.wordpress.com/2018/01/02/my-favourite-r-package-for-summarising-data/).
 
-## Tables and Barplots
+
+## Frequency Tables
 
 Frequency tables show you how often a given value occurs. To look at a frequency table of the data in R, use the function `table`. The top row of the output is the value, and the bottom row is the frequency of the value. Let's use `table` on the `am` variable of the mtcars data set. 
 
@@ -71,155 +86,104 @@ We can also compute joint tables using two categorical variables. For instance, 
 
 We can also combine the function `table` with `prop.table` to report proportions instead of total counts. For instance, `prop.table(table(mtcars$am))` reports the proportions of cars by transmission.
 
-The command `table` is also the starting point to construct barplots using the function `barplot`. By using `barplot(table(mtcars$am))` we can construct a barplot of the variable `am`.
-
-```{r barplot, exercise = TRUE, exercise.lines =2}
-# Construct a barplot of cyl
-```
-
-Stacked barplots can be constructed by giving in input tables of two variables as we practiced in the previous exercises.
-
-```{r barplot2, exercise = TRUE, exercise.lines =2}
-# Construct a stacked barplot of cyl and am
-
-```
-
-We can of course also customize the plots to make them a bit more appealing visually. Run the code below for you to try.
-
-```{r barplot3, exercise = TRUE, exercise.lines = 3}
-counts <- table(mtcars$cyl,mtcars$am)
-barplot(counts, beside = TRUE, col = c("blue","green","red"), legend = rownames(counts), ylab = "number of cars", xlab = "Transmission")
-```
-
-## Histograms
-
-To visualize continuous data we often want to use the histogram. The function `hist` produces an histogram of a variable. 
-
-```{r hist1, exercise = TRUE, exercise.lines = 2}
-# Try constructing an histogram of the variable mpg
-
-```
-
-Two interesting inputs of the function `hist` are:
- 
- - `breaks`: this can be given as a number that ``fixes" the number of bars in the histogram
- - `freq`: if `TRUE` it reports counts, if `FALSE` it reports frequencies/proportions.
- 
-```{r hist2, exercise = TRUE, exercise.lines = 2}
-# Modify the previous histogram to have 10 bars and show proportions
-
-```
-
-Plots (not only histograms) can be overall customized. Here are some options:
-
-- `col`: to choose the color (it can be a string or a number);
-- `main`: a string to give a title to the plot;
-- `xlim`: a vector of length 2 giving the limits of the x-axis;
-- `ylim`: as `xlim` but for the y-axis;
-- `xlab`: a string to give a label to the x-axis;
-- `ylab`: as `xlab` but for the y-axis.
-
-```{r hist3, exercise = TRUE, exercise.lines =2}
-# Construct a red histogram of mpg with title Histogram of MPG
-
-```
-
-The function `density` computes the values of the smooth version of the histogram. We can add the density plot to an histogram using the function `lines` (this more generally adds a line to a plot). Have a look at the code below for an example
-
-```{r hist4, exercise = TRUE, exercise.lines = 2}
-hist(mtcars$mpg, freq = F, xlim=c(5,40))
-lines(density(mtcars$mpg), lwd = 2 , lty =2 , col = "blue")
-```
-
-Here we see two additional option of `lines`: `lwd` - the width of the line; `lty` - the type of the line.
-
-## Boxplots
-
-Boxplots can describe the distribution of a continuous random variable. They can be created with the function `boxplot`.
-
-```{r boxplot1, exercise = TRUE, exercise.lines =2}
-# Construct a boxplot of mpg
-```
-
-As you can see the plot is quite basic, but anyway we will rarely use a boxplot to just describe a continuous variable. In its most powerful use, the boxplot compares a continuous distribution by levels of a categorical variable. For instance, `boxplot(mpg~am, data = mtcars)` produces boxplots of `mpg` for different values of `am`.
-
-```{r boxplot2, exercise = TRUE, exercise.lines = 2}
-# Construct a boxplot of mpg by cyl
-```
 
 ## Correlation
 
-The numerical summary that we introduced to summarize the relationship between two continuous variables is the so-called correlation. The function `cor` computes the correlation between any two (or more) numerical variables. For instance, `cor(mtcars$mpg,mtcars$hp)` computes the correlation between `mpg` and `hp`. 
+The numerical summary that we introduced to summarize the relationship between two quantitative variables is the so-called correlation. The function `cor` computes the correlation between any two (or more) quantitative variables. For instance, `cor(mtcars$mpg,mtcars$hp)` computes the correlation between `mpg` and `hp`. 
 
-Of course, we may want to more quickly produce all possible correlations. Let's try and give as input the whole dataframe `mtcars`.
+Of course, we may want to more quickly produce all possible correlations.  All variables in `mtcars` are quantitative expect for `vs` and `am`. We can use the following code to compute the correlation between all other variables.
 
 ```{r corr, exercise = TRUE, exercise.lines = 2}
 # Run the following code
-cor(mtcars)
+cor(mtcars[,-c(8,9)])
 ```
 
-It tells us `x must be numeric`. We are giving as input also factors, for which R does not now how to compute the correlation. One solution is to manually select the columns we want to retain. Let's create the correlation between `mpg`, `disp`, `hp`, `drat`, `wt` and `qsec`. These are the 1st, 3rd, 4th, 5th, 6th and 7th column of `mtcars`. I also give you code to more quickly doing this, without having to select the columns manually.
-
-```{r corr1, exercise = TRUE, exercise.lines =6}
-# Compute the correlation between the variables mentioned above
-
-
-# An automatic way to do this
-cor(mtcars[sapply(mtcars, is.numeric)])
-
-```
 
 The above code creates a symmetric matrix with all possible pairs of correlations. There are various libraries that can create some more pleasant output, as for instance the `corrplot` package and its `corrplot` function. Here's an example (notice that `corrplot` takes as input a correlation matrix). 
 
 ```{r corrplot, exercise = TRUE, exercise.lines = 2}
 library(corrplot)
-corrplot(cor(mtcars[sapply(mtcars, is.numeric)]))
+corrplot(cor(mtcars[,-c(8,9)]))
 ```
 
 There are many options that can be set for this plot. Have a look at the help for more info. Other representations of correlations can be found at this [link](http://www.sthda.com/english/wiki/correlation-matrix-a-quick-start-guide-to-analyze-format-and-visualize-a-correlation-matrix-using-r-software).
 
-## Scatterplots
 
-The scatterplot is the graphical representation of the relationship between two variables. This can be produced with the function `plot`. 
+## Standard R Graphics
 
-```{r scat, exercise = TRUE, exercise.lines = 6}
+R provides a wide array of functions to produce data visualizations. They are easy to use, they quickly produce an output, but they usually require a lot of effort so that they are customized to be pleasantly looking. Personally, I use them when I want to get a quick visualization, but I then use so more advanced package if I have to share these plots. 
+
+We will not spend a lot of time discussing these and I just give you a list of functions that can be used:
+
+ - **barplots**: the function `barplot` can be used which takes as input a `table`, e.g. `barplot(table(mtcars$cyl))`.
+ 
+ - **histograms**: the function `hist` takes as input a vector of data and outputs an histogram, e.g. `hist(mtcars$mpg)`.
+ 
+ - **density plots**: the function `density` construct the density of the data. This can be plotted on its own, e.g. `plot(density(mtcars$mpg))` or added to an histogram, e.g. `lines(density(mtcars$mpg))`.
+
+ - **boxplots**: the function `boxplot` creates a boxplot. If the interest is in describing a categorical vs a continuous variable one can use e.g. `boxplot(mtcars$mpg ~ mtcars$cyl)`.
+ 
+ - **scatterplots**: the function `plot` with inputs two vectors of data creates a scatterplot, e.g. `plot(mtcars$mpg,mtcars$hp)`. The function `pairs` which takes as input a dataframe creates a scatterplot between every pair of variables.
+ 
+ 
+### Examples 
+
+For you to see the capabilities of basic R, try and run the codes below and look at the output.
+
+```{r barplot, exercise = TRUE, exercise.lines =2}
+# Simple Barplot
+barplot(table(mtcars$cyl))
+```
+
+
+```{r barplot3, exercise = TRUE, exercise.lines = 3}
+# Bivariate Barplot with Customization
+counts <- table(mtcars$cyl,mtcars$am)
+barplot(counts, beside = TRUE, col = c("blue","green","red"), legend = rownames(counts), ylab = "number of cars", xlab = "Transmission")
+```
+
+```{r hist1, exercise = TRUE, exercise.lines = 2}
+# A simple histogram
+hist(mtcars$mpg)
+```
+
+
+```{r hist4, exercise = TRUE, exercise.lines = 2}
+# A fancier histogram with density line
+hist(mtcars$mpg, freq = F, xlim=c(5,40))
+lines(density(mtcars$mpg), lwd = 2 , lty =2 , col = "blue")
+```
+
+```{r boxplot2, exercise = TRUE, exercise.lines = 2}
+# A boxplot of mpg by cyl
+boxplot(mtcars$mpg~mtcars$cyl)
+```
+
+```{r scat, exercise = TRUE, exercise.lines = 2}
 # Scatterplot between mpg and hp
 plot(mtcars$hp, mtcars$mpg)
-
-# Create a scatterplot between disp and mpg
 ```
 
-Again the output of `plot` is very basic and we can change it using some of the options we have already seen (e.g. `xlab`, `ylab`, `main`, `col`). But there are others:
 
-- `pch`: a number to choose the plotting symbol;
-- `cex`: to change the size of the plotting symbol;
-
-```{r scat1, exercise = TRUE, exercise.lines = 3}
-# Create a scatterplot between mpg and hp, with pch = 20 with blue symbols
-```
-
-We can also color code observations depending on a third categorical variable. The option `col` takes as input either a string or a number, which is associated to colors. The following example shows you how to update the plot above to color points depending on `am`.
-
-```{r scat2, exercise = TRUE, exercise.lines =2}
+```{r scat2, exercise = TRUE, exercise.lines =3}
+# A Scatterplot with color and customization
 plot(mtcars$hp,mtcars$mpg, pch=20, col = as.numeric(mtcars$am))
 legend("topright", legend = c("automatic","manual"),pch=20, col= c(1,2))
 ```
 
-Lines can be added to a plot using the `abline` command. You can look at the help page to find additional details.
-
-If we want to produce the scatterplots between multiple variables at the same time, we can use the function `pairs`. The following code produces the scatterplots between the first four variables of `mtcars` (this is so that the output is actually visible)
 
 ```{r pairs, exercise = TRUE, exercise.lines =2}
+# A pairs plot
 pairs(mtcars[,1:4])
 ```
 
-For the categorical variable `cyl`, it produces some sort of boxplot. If we want we can exclude the non-numeric variables as done for computing the correlation. 
+## An Overview Plot
 
-Furthermore, the function `ggpairs` from the `GGally` package creates a fancier pairs plot. Let's try it!
+The function `ggpairs` from the `GGally` package creates a fancier pairs plot. Let's try it!
 
 ```{r pairs2, exercise = TRUE, exercise.lines = 2}
 library(GGally)
-ggpairs(mtcars[,1:4])
+ggpairs(mtcars[,1:8])
 ```
 
 This plot is a lot more informative and actually reports a lot of the plots we have seen in the previous sections. The function has a large number of options that can be set, you can find them typing `?ggpairs` once the `GGally` package is installed and loaded.
@@ -258,7 +222,7 @@ The aesthetic mappings take properties of the data and use them to influence vis
 All aesthetics for a plot are specified in the `aes()` function call (below you will see that each geom layer can have its own aes specification). For example, we can add a mapping from the number of cylinders of the cars to a color characteristic:
 
 ```{r ggplot3, exercise = TRUE, exercise.lines = 2}
-ggplot(mpg, aes(x = displ, y = hwy, color = class)) +
+ggplot(mtcars, aes(x = disp, y = mpg, color = am)) +
   geom_point()
 ```
 
