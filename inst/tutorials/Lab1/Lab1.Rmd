@@ -1,0 +1,339 @@
+---
+title: "MathLab - Lab 1"
+output:   learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Your first steps with R
+
+In the editor below there is already some sample code. Can you see which lines are actual code and which are comments?
+
+Add a line of code that calculates the sum of 6 and 12.
+
+```{r sum, exercise=TRUE, exercise.lines = 5}
+# Calculate 3 + 4
+3 + 4
+
+# Calculate 6 + 12
+
+```
+
+<div id="sum-hint">
+**Hint:** Just add a line of R code that calculates the sum of 6 and 12, just like the example in the sample code!
+</div>
+
+### Arithmetic with R
+In its most basic form, R can be used as a simple calculator. Consider the following arithmetic operators:
+
+ - Addition: `+`
+ - Subtraction `-`
+ - Multiplication: `*`
+ - Division: `/`
+ - Exponentiation: `^`
+ 
+In the editor below compute $2^5$ and run the code to see the results.
+
+```{r arithmetic, exercise = TRUE, exercise.lines = 14}
+# An addition
+5 + 5 
+
+# A subtraction
+5 - 5 
+
+# A multiplication
+3 * 5
+
+# A division
+(5 + 5) / 2 
+
+# Exponentiation
+
+```
+<div id="arithmetic-hint">
+**Hint:** Another example of exponentiation: `3^2` equals 9.
+</div>
+
+
+## Variable assignment 
+A basic concept in R programming is the **variable**. It allows you to store a value or an object in R. You can then later use this variable's name to easily access the value or the object that is stored within this variable. You use `<-` to assign a variable: `my_variable <- 4`.
+
+Complete the code in the editor such that it assigns the value 42 to the variable `x`. Notice that when you ask R to print x, the value 42 appears.
+
+```{r var1, exercise=TRUE, exercise.lines = 5}
+# Assign the value 42 to x
+x <- 
+
+# Print out the value of the variable x
+x
+```
+
+<div id="var1-hint">
+Look at how the value 4 was assigned to `my_variable` in the text above. Do the exact same thing in the editor, but now assign 42 to the variable `x`.
+</div>
+
+Notice that you can also use the symbol `=` for variable assignment. I tend to use the `<-` but you can use whichever you prefer!!
+
+## Vectors
+Vectors are one-dimension arrays that can hold one same type of data. In other words, a vector is a simple tool to store data. For example, you can store your daily gains and losses in the casinos.
+
+In R, you create a vector with the combine function `c()`. You place the vector elements separated by a comma between the brackets. For example:
+
+ - `numeric_vector <- c(1, 2, 3)`
+ - `character_vector <- c("a", "b", "c")`
+ - `boolean_vector <- c(TRUE, FALSE)`
+
+Complete the code such that `boolean_vector` contains the three elements: `TRUE`, `FALSE` and `TRUE` (in that order).
+
+```{r vec, exercise=TRUE, exercise.lines = 5}
+numeric_vector <- c(1, 10, 49)
+character_vector <- c("a", "b", "c")
+
+# Complete the code for 'boolean_vector'
+
+```
+
+<div id="vec-hint">
+Assign `c(TRUE,FALSE,TRUE)` to the variable `boolean_vector` with the `<-` operator. You can also use the shorter notations, `T` and `F` for `TRUE` and `FALSE` respectively.
+</div>
+
+
+### Selecting entries
+In the previous assignment, you created 3 vectors: a numeric vector, a character vector and a boolean vector. Sometimes you only want to select a specific element from one of those vectors instead of using the entire vector. R makes this very easy using indexing.
+
+Indexing entails the use of square brackets `[]` to select elements from a vector. For instance, `numeric_vector[1]` will select the first element of the vector `numeric_vector`. `numeric_vector[c(1,3)]` will select the first and the third element of the vector `numeric_vector`.
+
+ - Select the letter "a" from `character_vector`
+ - Select the second and the third element of `boolean_vector`
+
+```{r vec2, exercise=TRUE, exercise.lines = 11}
+# A numeric vector containing 3 elements
+numeric_vector <- c(1, 10, 49)
+
+# a character vector containing 3 elements
+character_vector <- c("a", "b", "c")
+
+# Complete the code for 'boolean_vector'
+boolean_vector <- c(TRUE, FALSE, TRUE)
+
+# Put your code here
+
+```
+
+<div id="vec2-hint">
+`a` is the first element of `character_vector` and can thus be selected using `character_vector[1]`.
+</div>
+
+
+## Dataframes
+
+A dataframe is a structure that combines vectors, possibly of different data types, into a matrix. Dataframes are the basic object that we use when carrying out a data analysis.
+
+
+To have a look at our first dataframe, print the object `mtcars`.
+
+```{r mtcars, exercise=TRUE, exercise.lines = 4}
+# print mtcars to the console
+
+# Type ?mtcars to read about its meaning
+```
+
+ 
+### Constructing a dataframe yourself
+
+As a first goal, you want to construct a data frame that describes the main characteristics of eight planets in our solar system. The main features of a planet are:
+
+ - The type of planet (Terrestrial or Gas Giant).
+ - The planet's diameter relative to the diameter of the Earth.
+ - The planet's rotation across the sun relative to that of the Earth.
+ - If the planet has rings or not (TRUE or FALSE).
+ 
+You construct a data frame with the `data.frame()` function. As arguments, you should provide the above mentioned vectors as input that should become the different columns of that data frame. Therefore, it is important that each vector used to construct a data frame has an equal length. But do not forget that it is possible (and likely) that they contain different types of data.
+
+Use the function `data.frame()` to construct a data frame. Call this variable `planet_df`.
+
+```{r df, exercise=TRUE, exercise.lines = 18}
+# planets vector
+planets <- c("Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune")
+
+# type vector
+type <- c("Terrestrial planet", "Terrestrial planet", "Terrestrial planet", "Terrestrial planet", "Gas giant", "Gas giant", "Gas giant", "Gas giant")
+
+# diameter vector
+diameter <- c(0.382, 0.949, 1, 0.532, 11.209, 9.449, 4.007, 3.883)
+
+# rotation vector
+rotation <- c(58.64, -243.02, 1, 1.03, 0.41, 0.43, -0.72, 0.67)
+
+# rings vector
+rings <- c(FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, TRUE, TRUE)
+
+# construct a dataframe planet_df from all the above variables
+
+```
+
+
+
+## Manipulating dataframes
+
+
+We can select rows and columns of a dataframe using the square brackets `[]`. For instance, if we wanted the entry in the second row and third column of the dataframe `mtcars` we can use the code `mtcars[2,3]`. If we want a full row or full column we have to omit the first or second number within the square brackets, e.g.
+
+ - `mtcars[2,]` returns the second row of `mtcars`
+ - `mtcars[,3]` returns the third row of `mtcars`
+
+We can also select multiple rows/columns of a dataframe by using vectors. For instance `mtcars[c(1,2),3]` returns the first two rows and the third column of `mtcars`.
+
+```{r index, exercise = TRUE, exercise.lines = 6}
+# Select the 1st and 10th row of mtcars
+
+# Select the 4th column of mtcars
+
+# Select the 2nd and 4th rows and 3rd and 4th columns of mtcars
+
+```
+
+```{r index-solution}
+mtcars[c(1,10),]
+mtcars[,4]
+mtcars[c(2,4),c(3,4)]
+```
+
+### Selecting columns
+
+You can also use the `$` operator to select an entire column from a dataframe. For instance, `mtcars$am` would select the entire `am` column from the dataframe `mtcars`.
+
+```{r dollar, exercise = TRUE, exercise.lines =2}
+# Select the column hp from mtcars
+
+```
+
+```{r dollar-solution}
+mtcars$hp
+```
+
+### Selection by comparison
+Sometimes you want to select elements from a dataframe in a more advanced fashion. This is where the use of logical operators may come in handy.
+
+The (logical) comparison operators known to R are: 
+ - `<` for less than 
+ - `>` for greater than
+ - `<=` for less than or equal to 
+ - `>=` for greater than or equal to 
+ - `==` for equal to each other 
+ - `!=` not equal to each other
+
+These can be used within the function `subset` to select rows and column of a dataframe. For example `subset(mtcars, mtcars$hp>100)` creates a dataframe where only observations such that horsepower is bigger than 100 are retained.
+
+```{r subset, exercise = TRUE, exercise.lines = 4}
+# Select observations in mtcars with 6 cylinders
+
+# Select observations in mtcars that do not have 4 cylinders
+
+```
+
+```{r subset-hint}
+# you may want to use the function subset together with the logical operators == (to check equality) and != (to check difference)
+```
+
+```{r subset-solution}
+subset(mtcars, mtcars$cyl == 6)
+subset(mtcars, mtcars$cyl != 4)
+```
+
+We can also impose some more complicated rule by using the `&` logical "and" and the `|` logical or. For instance to return a subset of `mtcars` including cars with a horsepower larger than 100 and four cylinders we can use `subset(mtcars, mtcars$hp >100 & mtcars$cyl == 4)`.
+
+```{r ciao, exercise = TRUE, exercise.lines = 2}
+# Select observations in mtcars with 6 cylinders and mpg less than 20
+
+```
+
+```{r ciao-hint}
+# Try using subset(mtcars, mtcars$mpg < 20 & mtcars$cyl == 6)
+```
+
+### Adding columns 
+
+We can add a column to a dataframe by simply assigning a vector of values to a column having a new name. For instance, suppose we want to compute the sum of `hp` and `mpg` in `mtcars` and we want to store that information in a column called `hp_mpg`. Then we can do this by
+
+`mtcars$hp_mpg <- mtcars$hp + mtcars$hp_mpg`
+
+## Inspecting dataframes
+There are several functions you can use to inspect your dataframe. To name a few
+
+ - `head`: this by default prints the first 6 rows of the dataframe
+ - `tail`: this by default prints the last 6 rows to the console
+ - `str`: this prints the structure of your dataframe
+ - `dim`: this by default prints the dimensions, that is, the number of rows and columns of your dataframe
+ - `colnames`: this prints the names of the columns of your dataframe
+ 
+```{r insp, exercise = TRUE, exercise.lines = 4}
+# Return the first six rows of mtcars
+
+# Print the names of the variables in mtcars
+
+```
+
+```{r insp-solution}
+head(mtcars)
+colnames(mtcars)
+```
+
+### Data structure
+
+Using the `str()` function we can look at the structure of a dataset. The output shows the variable names, their type, and the values of the first observations. This function is particularly important to ensure when loading a dataset into R, the process was correctly done.
+
+```{r str, exercise = TRUE, exercise.lines = 2}
+# Return the structure of mtcars
+
+```
+
+```{r str-solution}
+str(mtcars)
+```
+
+
+
+The variables `vs` and `am` are stored as numerics, but the numbers 0 and 1 used are just labels to denote whether the transmission is automatic or manual, for instance. So for instance if we were to run the code
+
+`mtcars$am[1] + mtcars$am[2]`
+
+which is the sum of the value of `am` for the first and second observations, R would output the number 2. In this setting this does not mean anything.
+
+So perhaps something did not work successfully when this dataset was imported into R, since `vs` and `am` should not be numeric.
+
+
+
+## Factors 
+
+Such categorical variables should be stored in R as a `factor`. The function `factor` can be used to recode the variables `am` and `vs` appropriately. This takes three important inputs (you can look at `?factor`):
+
+ - `x` the vector you want to transform into a factor
+ - `levels` an optional vector of the unique values (as character strings) that `x` might have taken
+ - `labels` an optional character vector of labels for the levels
+ 
+So for instance we can transform the variable `vs` into a factor by `mtcars$vs <- factor(mtcars$vs,labels = c("V","S"))`.
+
+```{r am, exercise = TRUE, exercise.lines = 6}
+# Transform the variable am of mtcars into a factor
+
+
+# Report the structure of mtcars
+
+```
+
+```{r am-solution}
+mtcars$am <- factor(mtcars$am, labels = c("automatic","manual"))
+str(mtcars)
+```
+
+So we can see that now `am` is a factor which takes 2 levels called `automatic` and `manual` and that for instance the first three observations are `manual`.
+
+If a variable is stored as a `factor` we can retrieve its levels using the function `levels`.
+
+
